@@ -32,17 +32,17 @@ Client variables
 
 The following variables can be defined by the customer
 
-| Variable                                                      | Example     | Comments (type)                                              |  
-| : ---                                                         | : ---       | : ---                                                        |  
-| `rhel_vmware_disk_manager__vmdisk_name`        | serverx     | Server name (without FQDN)                                   |  
-| `rhel_vmware_disk_manager__vmdisk_size_gb`     | 100         | Disk size in gig                                             |  
-| `rhel_vmware_disk_manager__lv_size_gb`         | 96          | Space in gig at the end of the LV                            |  
-| `rhel_vmware_disk_manager__vmdisk_vg_name`     | domvg006    | VG's name (vgappl or system most of the time)                |  
-| `rhel_vmware_disk_manager__vmdisk_lv_name`     | domlv006    | Name of the LV. EX: "lvoptvmware" for /opt/vmware            |  
-| `rhel_vmware_disk_manager__vmdisk_path_name`   | /dompath006 | The path for the mountpoint. EX: for /opt/vwware             |  
-| `rhel_vmware_disk_manager__vmdisk_path_option` | defaults    | mp opts Ex:"rw, relatime, seclabel, attr2, inode64, noquota" |  
-| `rhel_vmware_disk_manager__vmdisk_fs_type`     | xfs         | Type of filesystem (xfs most of the time) eg ext4 or xfs     |  
-| `rhel_gestion_disk_vmware__options`            | f           | User choice  a-b-c-d-e-f-g                                   |  
+| Variable                                       | Example     | Comments (type)                                         |  
+| : ---                                          | : ---       | : ---                                                   |  
+| `rhel_vmware_disk_manager__vmdisk_name`        | serverx     | Server name (without FQDN)                              |  
+| `rhel_vmware_disk_manager__vmdisk_size_gb`     | 100         | Disk size in gig                                        |  
+| `rhel_vmware_disk_manager__lv_size_gb`         | 96          | Space in gig at the end of the LV                       |  
+| `rhel_vmware_disk_manager__vmdisk_vg_name`     | domvg006    | VG's name (vgappl or system most of the time)           |  
+| `rhel_vmware_disk_manager__vmdisk_lv_name`     | domlv006    | Name of the LV. EX: "lvoptvmware" for /opt/vmware       |  
+| `rhel_vmware_disk_manager__vmdisk_path_name`   | /dompath006 | The path for the mountpoint. EX: for /opt/vwware        |  
+| `rhel_vmware_disk_manager__vmdisk_path_option` | defaults    | mp opts Ex:"rw,relatime,seclabel,attr2,inode64,noquota" |  
+| `rhel_vmware_disk_manager__vmdisk_fs_type`     | xfs         | Type of filesystem (xfs most of the time) eg ext4 or xfs|  
+| `rhel_gestion_disk_vmware__options`            | f           | User choice  a-b-c-d-e-f-g                              |  
 
 ```
 POSSIBLE CHOICE:  
