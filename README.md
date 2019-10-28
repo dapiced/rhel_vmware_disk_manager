@@ -1,7 +1,7 @@
 Role rhel_vmware_disk_manager
 =============================
 
-1- Added disk vmware, partition, lvg, lvol, format, mount and * extend * lv for rhel 7 and 8 (option a or b or c or d or e or f)
+1- Added disk vmware, partition, lvg, lvol, format, mount and * extend * lv for rhel 7 and 8 (option a or b or c or d or e or f)  
 2- Existing LV / mountpoint extension. the vg in question must have enough space, please check before (option g)
 
 Required
