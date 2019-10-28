@@ -44,7 +44,7 @@ The following variables can be defined by the customer
 | `rhel_vmware_disk_manager__vmdisk_fs_type`     | xfs         | Type of filesystem (xfs most of the time) eg ext4 or xfs     |  
 | `rhel_gestion_disk_vmware__options`            | f           | User choice  a-b-c-d-e-f-g                                   |  
 
-`` `
+```
 POSSIBLE CHOICE:  
 a: Adding a disk (raw device)
 b: Adding a disk + partition
@@ -55,17 +55,17 @@ f: Adding a disk + partition + adding the disk to the requested VG + Creating th
 g: Existing mountpoint only (the vg in question must have enough space, please check before) LVEXTEND
 `` `
 
-For other variables for the role, see the file defaults / main.yml
+For other variables for the role, see the file defaults / main.yml  
 
 Author
 ------
 
-Dominic D'Apice (https://github.com/dapiced)
+Dominic D'Apice (https://github.com/dapiced)  
 
 Reference
 ---------
 
-[Https://docs.ansible.com/ansible/latest/modules/vmware_guest_disk_module.html]
-[Https://docs.ansible.com/ansible/latest/modules/vmware_guest_disk_facts_module.html]
-[https://github.com/ansible/ansible/pull/58117/files] (vmware_guest_disk_facts_module beta)
-[Https://docs.ansible.com/ansible/latest/modules/vmware_vm_facts_module.html]
+[Https://docs.ansible.com/ansible/latest/modules/vmware_guest_disk_module.html]  
+[Https://docs.ansible.com/ansible/latest/modules/vmware_guest_disk_facts_module.html]  
+[https://github.com/ansible/ansible/pull/58117/files] (vmware_guest_disk_facts_module beta)  
+[Https://docs.ansible.com/ansible/latest/modules/vmware_vm_facts_module.html]  
