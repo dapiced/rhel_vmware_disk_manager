@@ -32,8 +32,8 @@ Client variables
 
 The following variables can be defined by the customer
 
-| Variable                                       | Example     | Comments (type)                                              |  
-| : ---                                          | : ---       | : ---                                                        |  
+| Variable                                                      | Example     | Comments (type)                                              |  
+| : ---                                                         | : ---       | : ---                                                        |  
 | `rhel_vmware_disk_manager__vmdisk_name`        | serverx     | Server name (without FQDN)                                   |  
 | `rhel_vmware_disk_manager__vmdisk_size_gb`     | 100         | Disk size in gig                                             |  
 | `rhel_vmware_disk_manager__lv_size_gb`         | 96          | Space in gig at the end of the LV                            |  
