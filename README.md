@@ -20,12 +20,12 @@ None
 limitations
 -----------
 
-Set_fact tasks have "ignore_errors: true". set_fact is not ignored if option g
-Existing LV / mountpoint extension (option g), the vg in question must have enough space
-Only 4 SCSI controllers are allowed per virtual machine.
-You must take precautions when specifying scsi_controller = 0 and unit_number = 0 because this disk may contain an operating system.
-The os system disk must be scsi_id: 0 and unit_number: 0 (default)
-unit_number (integer): disk unit number. Valid values ​​range from 0 to 15. Only 15 disks are allowed per SCSI controller.
+Set_fact tasks have "ignore_errors: true". set_fact is not ignored if option g  
+Existing LV / mountpoint extension (option g), the vg in question must have enough space  
+Only 4 SCSI controllers are allowed per virtual machine.  
+You must take precautions when specifying scsi_controller = 0 and unit_number = 0 because this disk may contain an operating system.  
+The os system disk must be scsi_id: 0 and unit_number: 0 (default)  
+unit_number (integer): disk unit number. Valid values ​​range from 0 to 15. Only 15 disks are allowed per SCSI controller.  
 
 Client variables
 ----------------
