@@ -53,7 +53,7 @@ d: Addition of a disk + partition + add the disk to the requested VG + Creation 
 e: Adding a disk + partition + adding the disk to the requested VG + Creating the requested LV + formatting the filesystem
 f: Adding a disk + partition + adding the disk to the requested VG + Creating the requested LV + formatting the filesystem + mount the mountpoint
 g: Existing mountpoint only (the vg in question must have enough space, please check before) LVEXTEND
-`` `
+```
 
 For other variables for the role, see the file defaults / main.yml  
 
