@@ -1,0 +1,26 @@
+---
+
+- name: Find the right disk device (scsi 0 only / max 15 disk)
+  shell: "fdisk -l | grep Disk | tail -1 | awk '{ print $2}' | sed 's/:$//'"
+  register:  rhel_vmware_disk_manager__parted_device
+  tags:  rhel_vmware_disk_manager__parted
+
+- name: Partitionnage d un disque vmware
+  parted:
+    device: '{{ rhel_vmware_disk_manager__parted_device.stdout }}'
+    align: '{{ item.align | default(omit) }}'
+    flags: '{{ item.flags | default(omit) }}'
+    label: '{{ item.label | default("msdos") }}'
+    name: '{{ item.name | default(omit) }}'
+    number: '{{ item.number | default(omit) }}'
+    part_end: '{{ item.part_end | default(omit) }}'
+    part_start: '{{ item.part_start | default(omit) }}'
+    state: '{{ item.state | default(omit) }}'
+    unit: '{{ item.unit | default(omit) }}'
+  loop: '{{ rhel_vmware_disk_manager__parted }}'
+  tags:  rhel_vmware_disk_manager__parted
+
+- name: Partition Information
+  debug:
+    msg: "************The disk {{  rhel_vmware_disk_manager__parted_device.stdout }} has been parted !************"
+  tags:  rhel_vmware_disk_manager__parted

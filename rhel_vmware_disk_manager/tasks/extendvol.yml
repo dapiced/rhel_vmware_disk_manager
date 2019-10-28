@@ -1,0 +1,14 @@
+---
+
+- name: Extending the logical volume
+  lvol:
+    vg:   "{{ rhel_vmware_disk_manager__vmdisk_vg_name }}"
+    lv:   "{{ rhel_vmware_disk_manager__vmdisk_lv_name }}"
+    size: "{{ rhel_vmware_disk_manager__lv_size_gb }}g"
+    resizefs: true
+  tags:  rhel_vmware_disk_manager__lvol_extend
+
+- name: LV Infomation
+  debug:
+    msg: "************ The logical volume {{ rhel_vmware_disk_manager__vmdisk_lv_name }} has been created or extended ************"
+  tags:  rhel_vmware_disk_manager__lvol_extend

@@ -1,0 +1,22 @@
+---
+- name: Configuring the logical volume
+  lvol:
+    lv: '{{ rhel_vmware_disk_manager__vmdisk_lv_name }}'
+    vg: '{{ rhel_vmware_disk_manager__vmdisk_vg_name }}'
+    active: '{{ item.active | default(omit) }}'
+    force: '{{ item.force | default(omit) }}'
+    opts: '{{ item.opts | default(omit) }}'
+    pvs: '{{ item.opts | default(omit) }}'
+    resizefs: '{{ item.resizefs | default(omit) }}'
+    shrink: '{{ item.shrink | default(omit) }}'
+    size: '{{ item.size | default(omit) }}'
+    snapshot: '{{ item.snapshot | default(omit) }}'
+    state: '{{ item.state | default(omit) }}'
+    thinpool: '{{ item.thinpool | default(omit) }}'
+  loop: '{{ rhel_vmware_disk_manager__lvol }}'
+  tags:  rhel_vmware_disk_manager__lvol
+
+- name: LV Infomation 
+  debug:
+    msg: "************ The Logical volume  {{ rhel_vmware_disk_manager__vmdisk_lv_name }} has benn created or extended ************"
+  tags:  rhel_vmware_disk_manager__lvol

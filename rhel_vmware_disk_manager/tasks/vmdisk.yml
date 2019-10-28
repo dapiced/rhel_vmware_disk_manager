@@ -1,0 +1,246 @@
+---
+
+- name: Ignore errors with the "g" option only
+  set_fact:
+     rhel_vmware_disk_manager__ignore_errors: true
+    # cacheable: true
+  when:  rhel_vmware_disk_manager__options == "g"
+# set_fact is not ignored if option g
+
+# !Can not use a loop with json_query
+# loop 1
+- name:Get VM facts 1
+  vmware_vm_facts:
+    hostname: "{{ rhel_vmware_disk_manager__1 }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vm_type: vm
+  delegate_to: "{{  rhel_vmware_disk_manager__delegate_endpoint }}"
+  register: rhel_vmware_disk_manager__vmdisk_vm_base_fact_test1
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    ansible_python_interpreter: /var/endpoint/bin/python
+    ansible_user: "{{ username }}"
+    ansible_password: "{{ password }}"
+    ansible_become: true
+    ansible_become_method: sudo
+    ansible_become_user: root
+    ansible_connection: ssh
+
+- name: Check so good vcenter 1 for "{{ rhel_vmware_disk_manager__vmdisk_name }}"
+  set_fact:
+     rhel_vmware_disk_manager__vmdisk_vc: "{{ rhel_vmware_disk_manager__1 }}"
+     rhel_vmware_disk_manager__vmdisk_cl: "{{ rhel_vmware_disk_manager__vmdisk_vm_base_fact_test1 | json_query(query) }}"
+  when:
+    - item is search( "{{ rhel_vmware_disk_manager__vmdisk_name }}" )
+  loop: "{{ _ rhel_vmware_disk_manager__vmdisk_vm_base_fact_test1 | json_query('virtual_machines[*].guest_name') | sort }}"
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    query: "virtual_machines[?guest_name=='{{  rhel_vmware_disk_manager__vmdisk_name }}'].cluster"
+  ignore_errors: "{{  rhel_vmware_disk_manager__ignore_errors }}"
+
+# loop 2
+- name: Get VM facts 2
+  vmware_vm_facts:
+    hostname: "{{ rhel_vmware_disk_manager__2 }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vm_type: vm
+  delegate_to: "{{ rhel_vmware_disk_manager__delegate_endpoint }}"
+  register: rhel_vmware_disk_manager__vmdisk_vm_base_fact_test2
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    ansible_python_interpreter: /var/endpoint/bin/python
+    ansible_user: "{{ username }}"
+    ansible_password: "{{ password }}"
+    ansible_become: true
+    ansible_become_method: sudo
+    ansible_become_user: root
+    ansible_connection: ssh
+
+- name: Check so good vcenter 2 for "{{ rhel_vmware_disk_manager__vmdisk_name }}"
+  set_fact:
+     rhel_vmware_disk_manager__vmdisk_vc: "{{ rhel_vmware_disk_manager__2 }}"
+     rhel_vmware_disk_manager__vmdisk_cl: "{{ rhel_vmware_disk_manager__vmdisk_vm_base_fact_test2| json_query(query) }}"
+  when:
+    - item is search( "{{  rhel_vmware_disk_manager__vmdisk_name }}" )
+  loop: "{{ rhel_vmware_disk_manager__vmdisk_vm_base_fact_test2 | json_query('virtual_machines[*].guest_name') | sort }}"
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    query: "virtual_machines[?guest_name=='{{  rhel_vmware_disk_manager__vmdisk_name }}'].cluster"
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+# loop 3
+- name: Get VM facts 3
+  vmware_vm_facts:
+    hostname: "{{ rhel_vmware_disk_manager__3 }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vm_type: vm
+  delegate_to: "{{ rhel_vmware_disk_manager__delegate_endpoint }}"
+  register: rhel_vmware_disk_manager__vmdisk_vm_base_fact_test3
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    ansible_python_interpreter: /var/endpoint/bin/python
+    ansible_user: "{{ username }}"
+    ansible_password: "{{ password }}"
+    ansible_become: true
+    ansible_become_method: sudo
+    ansible_become_user: root
+    ansible_connection: ssh
+
+- name: Check if good vcenter 3 for "{{ rhel_vmware_disk_manager__vmdisk_name }}"
+  set_fact:
+     rhel_vmware_disk_manager__vmdisk_vc: "{{ rhel_vmware_disk_manager__3 }}"
+     rhel_vmware_disk_manager__vmdisk_cl: "{{ rhel_vmware_disk_manager__vmdisk_vm_base_fact_test3 | json_query(query) }}"
+  when:
+    - item is search( "{{ rhel_vmware_disk_manager__vmdisk_name }}" )
+  loop: "{{ rhel_vmware_disk_manager__vmdisk_vm_base_fact_test3 | json_query('virtual_machines[*].guest_name') | sort }}"
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    query: "virtual_machines[?guest_name=='{{ rhel_vmware_disk_manager__vmdisk_name }}'].cluster"
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+# loop 4
+- name: Get VM facts 4
+  vmware_vm_facts:
+    hostname: "{{ rhel_vmware_disk_manager__4 }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    vm_type: vm
+  delegate_to: "{{ rhel_vmware_disk_manager__delegate_endpoint }}"
+  register: rhel_vmware_disk_manager__vmdisk_vm_base_fact_test4
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    ansible_python_interpreter: /var/endpoint/bin/python
+    ansible_user: "{{ username }}"
+    ansible_password: "{{ password }}"
+    ansible_become: true
+    ansible_become_method: sudo
+    ansible_become_user: root
+    ansible_connection: ssh
+
+- name: Check if good vcenter 4 for "{{ rhel_vmware_disk_manager__vmdisk_name }}"
+  set_fact:
+     rhel_vmware_disk_manager__vmdisk_vc: "{{ rhel_vmware_disk_manager__4 }}"
+     rhel_vmware_disk_manager__vmdisk_cl: "{{ rhel_vmware_disk_manager__vmdisk_vm_base_fact_test4 | json_query(query) }}"
+  when:
+    - item is search( "{{ rhel_vmware_disk_manager__vmdisk_name }}" )
+  loop: "{{ rhel_vmware_disk_manager__vmdisk_vm_base_fact_test4 | json_query('virtual_machines[*].guest_name') | sort }}"
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    query: "virtual_machines[?guest_name=='{{ rhel_vmware_disk_manager__vmdisk_name }}'].cluster"
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+# end loop
+
+- name:Get the facts record for a VM
+  vmware_guest_disk_facts_beta:
+    hostname: "{{ rhel_vmware_disk_manager__vmdisk_vc }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    datacenter:  rhel_vmware_disk_manager__vmdisk_cl
+    validate_certs: false
+    name: "{{ rhel_vmware_disk_manager__vmdisk_name }}"
+  delegate_to: "{{ rhel_vmware_disk_manager__delegate_endpoint }}"
+  register:  rhel_vmware_disk_manager__disk_facts
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    ansible_python_interpreter: /var/endpoint/bin/python
+    ansible_user: "{{ username }}"
+    ansible_password: "{{ password }}"
+    ansible_become: true
+    ansible_become_method: sudo
+    ansible_become_user: root
+    ansible_connection: ssh
+
+- name: find the scsi_id_max
+  set_fact:
+     rhel_vmware_disk_manager__scsi_id_max: "{{ rhel_vmware_disk_manager__disk_facts | json_query(query) }}"
+    cacheable: true
+  vars:
+    query: "max(guest_disk_facts.*[].controller_bus_number)"
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+- name: find the unit_id_max of scsi_id_max
+  set_fact:
+     rhel_vmware_disk_manager__unit_id_max: "{{ rhel_vmware_disk_manager__disk_facts | json_query(query) }}"
+    cacheable: true
+  vars:
+    query: "max(guest_disk_facts.[*] | [0][?controller_bus_number==`{{ rhel_vmware_disk_manager__scsi_id_max }}`].unit_number)"
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+- name: Get next controller_bus_number and reset to 0 of unit_number if next unit_number == 15
+  set_fact:
+     rhel_vmware_disk_manager__scsi_id_max: "{{ rhel_vmware_disk_manager__scsi_id_max | int + 1 }}"
+     rhel_vmware_disk_manager__unit_id_max: -1
+    cacheable: true  
+  when: >
+         ( {{ ansible_facts[' rhel_vmware_disk_manager__unit_id_max'] | int }} == 15)
+  tags:  rhel_vmware_disk_manager__vmdisk
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+- name:Get the next unit_number (1 to 15) if next unit_number <= 14
+  set_fact:
+     rhel_vmware_disk_manager__unit_id_max: "{{ rhel_vmware_disk_manager__unit_id_max | int + 1 }}"
+    cacheable: true
+  when: >
+         ( {{ ansible_facts['rhel_vmware_disk_manager__unit_id_max'] | int }} <= 14)
+  tags:  rhel_vmware_disk_manager__vmdisk
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+- name: Check exception no.1 unit_number (1 to 15 excepte 0 reserve to OS et 7 reserve to scsi controller)
+  set_fact:
+     rhel_vmware_disk_manager__unit_number_invalid: valid
+    cacheable: true
+  when: >
+    (ansible_facts['rhel_vmware_disk_manager__unit_id_max'] != "7")
+  tags:  rhel_vmware_disk_manager__vmdisk
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+- name:Check exception no.2 unit_number (1 to 15 excepte 0 reserve to OS et 7 reserve to scsi controller)
+  set_fact:
+     rhel_vmware_disk_manager__unit_number_invalid: invalid
+    cacheable: true
+  when: >
+    (ansible_facts['rhel_vmware_disk_manager__unit_id_max'] == "7")
+  tags:  rhel_vmware_disk_manager__vmdisk
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+- name: Check exception no.3 unit_number (1 to 15 excepte 0 reserve to OS et 7 reserve to scsi controller)
+  set_fact:
+     rhel_vmware_disk_manager__unit_id_max: "{{ ansible_facts['rhel_vmware_disk_manager__unit_id_max'] | int + 1 }}"
+    cacheable: true
+  when: ansible_facts['rhel_vmware_disk_manager__unit_number_invalid'] == "invalid"
+  tags:  rhel_vmware_disk_manager__vmdisk
+  ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
+
+- name: Getting a vmware disk with all the right parameters
+  vmware_guest_disk:
+    hostname: "{{ rhel_vmware_disk_manager__vmdisk_vc }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    datacenter: "{{ rhel_vmware_disk_manager__vmdisk_cl }}"
+    validate_certs: false
+    name: "{{ rhel_vmware_disk_manager__vmdisk_name }}"
+    disk:
+      - size_gb: "{{ rhel_vmware_disk_manager__vmdisk_size_gb }}"
+        state: present
+        autoselect_datastore: true
+        scsi_controller: "{{ rhel_vmware_disk_manager__scsi_id_max }}"
+        unit_number: "{{ rhel_vmware_disk_manager__unit_id_max }}"
+  delegate_to: "{{ rhel_vmware_disk_manager__delegate_endpoint }}"
+  register:  rhel_vmware_disk_manager__disk_facts_action
+  tags:  rhel_vmware_disk_manager__vmdisk
+  vars:
+    ansible_python_interpreter: /var/endpoint/bin/python
+    ansible_user: "{{ username }}"
+    ansible_password: "{{ password }}"
+    ansible_become: true
+    ansible_become_method: sudo
+    ansible_become_user: root
+    ansible_connection: ssh
+
+- name: Disk Information
+  debug:
+    msg: "************The disk has been added to your server !************"
+  tags:  rhel_vmware_disk_manager__vmdisk

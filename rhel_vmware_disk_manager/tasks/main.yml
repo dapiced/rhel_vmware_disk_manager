@@ -1,0 +1,53 @@
+---
+- name:Adding a vmware disk
+  include: vmdisk.yml
+  when: >
+    ( rhel_vmware_disk_manager__options == "a") or
+    ( rhel_vmware_disk_manager__options == "b") or
+    ( rhel_vmware_disk_manager__options == "c") or
+    ( rhel_vmware_disk_manager__options == "d") or
+    ( rhel_vmware_disk_manager__options == "e") or
+    ( rhel_vmware_disk_manager__options == "f")
+
+- name: Partitioning a vmware drive
+  include: parted.yml
+  when: >
+    ( rhel_vmware_disk_manager__options == "b") or
+    ( rhel_vmware_disk_manager__options == "c") or
+    ( rhel_vmware_disk_manager__options == "d") or
+    ( rhel_vmware_disk_manager__options == "e") or
+    ( rhel_vmware_disk_manager__options == "f")
+
+- name: Configuring the logical volume group 
+  include: lvg.yml
+  when: > 
+    ( rhel_vmware_disk_manager__options == "c") or
+    ( rhel_vmware_disk_manager__options == "d") or
+    ( rhel_vmware_disk_manager__options == "e") or
+    ( rhel_vmware_disk_manager__options == "f")
+
+- name: Configuring the logical volume   
+  include: lvol.yml
+  when: >
+    ( rhel_vmware_disk_manager__options == "d") or
+    ( rhel_vmware_disk_manager__options == "e") or
+    ( rhel_vmware_disk_manager__options == "f")
+
+- name:Formatting file system
+  include: filesystem.yml
+  when: >
+    ( rhel_vmware_disk_manager__options == "e") or
+    ( rhel_vmware_disk_manager__options == "f")
+
+- name: Mount mountpoint
+  include: mount.yml
+  when: ( rhel_vmware_disk_manager__options == "f")
+
+- name:Enlarge a mountpoint only (if enough space in the VG)
+  include: extendvol.yml
+  when: ( rhel_vmware_disk_manager__options == "g")
+
+- name: Disk Information
+  debug:
+    msg: "************ The disk manager completed the task successfully !************"
+  tags:  rhel_vmware_disk_manager__vmdisk_fin  

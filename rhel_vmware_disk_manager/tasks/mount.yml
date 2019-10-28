@@ -1,0 +1,20 @@
+---
+- name: Mount mountpoint
+  mount:
+    fstype: '{{ item.fstype }}'
+    src: '/dev/{{ rhel_vmware_disk_manager__vmdisk_vg_name }}/{{ rhel_vmware_disk_manager__vmdisk_lv_name }}'
+    path: '{{ rhel_vmware_disk_manager__vmdisk_path_name }}'
+    backup: '{{ item.backup | default(omit) }}'
+    boot: '{{ item.boot | default(omit) }}'
+    dump: '{{ item.dump | default(omit) }}'
+    fstab: '{{ item.fstab | default(omit) }}'
+    opts: '{{ item.opts  | default("defaults") }}'
+    passno: '{{ item.passno | default(omit) }}'
+    state: '{{ item.state  | default("mounted")  }}'
+  loop: '{{ rhel_vmware_disk_manager__mount }}'
+  tags:  rhel_vmware_disk_manager__mount
+
+- name: Mountpoint Information
+  debug:
+    msg: "***The filesystem /dev/{{ rhel_vmware_disk_manager__vmdisk_vg_name }}/{{ rhel_vmware_disk_manager__vmdisk_lv_name }} has been mounted ***"
+  tags:  rhel_vmware_disk_manager__mount

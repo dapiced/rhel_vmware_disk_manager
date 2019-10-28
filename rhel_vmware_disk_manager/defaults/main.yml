@@ -1,0 +1,41 @@
+---
+# Variables Client
+ rhel_vmware_disk_manager__vmdisk_name:        sereverx      # Server name (without FQDN)
+ rhel_vmware_disk_manager__vmdisk_size_gb:     100           # Disk size in gig
+ rhel_vmware_disk_manager__lv_size_gb:         96            # Space in gig at the end to the LV in question
+ rhel_vmware_disk_manager__vmdisk_vg_name:     domvg005      # Name of VG (vgappl or system most of the time)
+ rhel_vmware_disk_manager__vmdisk_lv_name:     domlv005      # Name of the LV. EX: "lvoptvmware" for /opt/vmware
+ rhel_vmware_disk_manager__vmdisk_path_name:   /dompath005   # The path for the mountpoint. EX: for /opt/vmware
+ rhel_vmware_disk_manager__vmdisk_path_option: defaults      # Permission of the mountpoint /etc/fstab. Ex: "rw,relatime,seclabel,attr2,inode64,noquota"
+ rhel_vmware_disk_manager__vmdisk_fs_type:     xfs           # Type of filesystem (xfs most of the time) ex: ext4 or xfs
+ rhel_vmware_disk_manager__options:            f             # User choice, only one possible choice in lowercase (a-b-c-d-e-f-g)
+# a: Adding a disk (raw device)
+# b: Adding a disk + partition
+# c: Adding a disk + partition + add the disk to the requested VG
+# d: Addition of a disk + partition + add the disk to the requested VG + Creation of the requested LV
+# e: Adding a disk + partition + adding the disk to the requested VG + Creating the requested LV + formatting the filesystem
+# f: Adding a disk + partition + adding the disk to the requested VG + Creating the requested LV + formatting the filesystem + mount the mountpoint
+# g: Existing mountpoint only (the vg in question must have enough space, please check before) LVEXTEND
+
+ # Variables role
+ rhel_vmware_disk_manager__delegate_endpoint: "serverxyz"
+ rhel_vmware_disk_manager__1: "vc1"
+ rhel_vmware_disk_manager__2: "vc2"
+ rhel_vmware_disk_manager__3: "vc3"
+ rhel_vmware_disk_manager__4: "vc4"
+
+ rhel_vmware_disk_manager__ignore_errors: false
+
+ rhel_vmware_disk_manager__parted:
+  -  number: 1
+     label: msdos
+     state: present
+
+ rhel_vmware_disk_manager__lvol:
+  - shrink: no
+    size: "{{  rhel_vmware_disk_manager__lv_size_gb }}g" #size: 100%FREE
+
+ rhel_vmware_disk_manager__mount:
+  -  src:  # automatic by role (variable not used)
+     fstype: "{{  rhel_vmware_disk_manager__vmdisk_fs_type }}"
+     opts: "{{  rhel_vmware_disk_manager__vmdisk_path_option }}"

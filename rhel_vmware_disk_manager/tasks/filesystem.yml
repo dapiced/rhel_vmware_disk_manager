@@ -1,0 +1,14 @@
+---
+- name: Formatting file system
+  filesystem:
+    dev: '/dev/{{ rhel_vmware_disk_manager__vmdisk_vg_name }}/{{ rhel_vmware_disk_manager__vmdisk_lv_name }}'
+    fstype: xfs
+    force: '{{ item.force | default(omit) }}'
+    opts: '{{ item.opts | default(omit) }}'
+    resizefs: '{{ item.resizefs | default(omit) }}'
+  tags:  rhel_vmware_disk_manager__filesystem
+
+- name: Format Information
+  debug:
+    msg: "**** The filesystem dev/{{ rhel_vmware_disk_manager__vmdisk_vg_name }}/{{ rhel_vmware_disk_manager__vmdisk_lv_name }} has been formatted correctly ****"
+  tags:  rhel_vmware_disk_manager__filesystem
