@@ -1,7 +1,7 @@
 Ansible role rhel_vmware_disk_manager
 =====================================
 
-1- Added disk vmware, partition, lvg, lvol, format, mount and * extend * lv for rhel 7 and 8 (option a or b or c or d or e or f)  
+1- Add vmware disk, partition, lvg, lvol, format, mount and * extend * lv for rhel 7 and 8 (option a or b or c or d or e or f)  
 2- Existing LV / mountpoint extension. the vg in question must have enough space, please check before (option g)
 
 Required
@@ -10,7 +10,7 @@ Required
 Have access to the python API vmware pyvmomi  
 Have the latest copy of vmware_guest_disk_facts_beta.py  
 Limit ansible must be the server in question (with FQDN)  
-The os system disk must be scsi_id: 0 and unit_number: 0 (default)  
+The os system disk must be scsi_id: 0 and unit_number: 0 (this should be the default)  
 
 Dependences
 ------------
@@ -25,7 +25,7 @@ Existing LV / mountpoint extension (option g), the vg in question must have enou
 Only 4 SCSI controllers are allowed per virtual machine.  
 You must take precautions when specifying scsi_controller = 0 and unit_number = 0 because this disk may contain an operating system.  
 The os system disk must be scsi_id: 0 and unit_number: 0 (default)  
-unit_number (integer): disk unit number. Valid values ​​range from 0 to 15. Only 15 disks are allowed per SCSI controller.  
+unit_number (integer): disk unit number. Valid values range from 0 to 15. Only 15 disks are allowed per SCSI controller.  
 
 Client variables
 ----------------
