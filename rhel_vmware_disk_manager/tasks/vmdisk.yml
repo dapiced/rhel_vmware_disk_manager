@@ -9,7 +9,7 @@
 
 # !Can not use a loop with json_query
 # loop 1
-- name:Get VM facts 1
+- name: Get VM facts 1
   vmware_vm_facts:
     hostname: "{{ rhel_vmware_disk_manager__1 }}"
     username: "{{ username }}"
@@ -133,7 +133,7 @@
   ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
 # end loop
 
-- name:Get the facts record for a VM
+- name: Get the facts record for a VM
   vmware_guest_disk_facts_beta:
     hostname: "{{ rhel_vmware_disk_manager__vmdisk_vc }}"
     username: "{{ username }}"
@@ -197,7 +197,7 @@
   tags:  rhel_vmware_disk_manager__vmdisk
   ignore_errors: "{{ rhel_vmware_disk_manager__ignore_errors }}"
 
-- name:Check exception no.2 unit_number (1 to 15 excepte 0 reserve to OS et 7 reserve to scsi controller)
+- name: Check exception no.2 unit_number (1 to 15 excepte 0 reserve to OS et 7 reserve to scsi controller)
   set_fact:
      rhel_vmware_disk_manager__unit_number_invalid: invalid
     cacheable: true
