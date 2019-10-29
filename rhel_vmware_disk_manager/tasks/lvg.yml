@@ -11,7 +11,7 @@
   shell: /usr/sbin/pvcreate "{{ rhel_vmware_disk_manager__parted_device.stdout }}1"
   tags:  rhel_vmware_disk_manager__lvg
 
-- name:  Check if new vg
+- name: Check if new vg
   shell: "/usr/sbin/vgs| grep -w -q {{ rhel_vmware_disk_manager__vmdisk_vg_name }}; /usr/bin/echo $?"
   register:  rhel_vmware_disk_manager__lvg_check
   tags:  rhel_vmware_disk_manager__lvg
@@ -21,7 +21,7 @@
   tags:  rhel_vmware_disk_manager__lvg
   when:  rhel_vmware_disk_manager__lvg_check.stdout == "0"
 
-- name:Creation of the logical volume group
+- name: Creation of the logical volume group
   shell: /usr/sbin/vgcreate "{{ rhel_vmware_disk_manager__vmdisk_vg_name }}" "{{ rhel_vmware_disk_manager__parted_device.stdout }}1"
   tags:  rhel_vmware_disk_manager__lvg
   when:  rhel_vmware_disk_manager__lvg_check.stdout == "1"
