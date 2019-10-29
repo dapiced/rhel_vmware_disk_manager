@@ -15,7 +15,7 @@ The os system disk must be scsi_id: 0 and unit_number: 0 (this should be the def
 Dependences
 ------------
 
-None
+Have access to the python API vmware pyvmomi 
 
 Limitations
 -----------
