@@ -1,4 +1,4 @@
-Ansible Role rhel_vmware_disk_manager
+Ansible role rhel_vmware_disk_manager
 =====================================
 
 1- Added disk vmware, partition, lvg, lvol, format, mount and * extend * lv for rhel 7 and 8 (option a or b or c or d or e or f)  
