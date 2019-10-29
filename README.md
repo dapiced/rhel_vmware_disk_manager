@@ -64,7 +64,7 @@ Dominic D'Apice (https://github.com/dapiced)
 Reference
 ---------
 
-[Https://docs.ansible.com/ansible/latest/modules/vmware_guest_disk_module.html]  
-[Https://docs.ansible.com/ansible/latest/modules/vmware_guest_disk_facts_module.html]  
+[https://docs.ansible.com/ansible/latest/modules/vmware_guest_disk_module.html]  
+[https://docs.ansible.com/ansible/latest/modules/vmware_guest_disk_facts_module.html]  
 [https://github.com/ansible/ansible/pull/58117/files] (vmware_guest_disk_facts_module beta)  
-[Https://docs.ansible.com/ansible/latest/modules/vmware_vm_facts_module.html]  
+[https://docs.ansible.com/ansible/latest/modules/vmware_vm_facts_module.html]  
