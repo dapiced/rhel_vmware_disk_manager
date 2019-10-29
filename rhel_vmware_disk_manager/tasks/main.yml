@@ -1,5 +1,5 @@
 ---
-- name:Adding a vmware disk
+- name: Adding a vmware disk
   include: vmdisk.yml
   when: >
     ( rhel_vmware_disk_manager__options == "a") or
@@ -33,7 +33,7 @@
     ( rhel_vmware_disk_manager__options == "e") or
     ( rhel_vmware_disk_manager__options == "f")
 
-- name:Formatting file system
+- name: Formatting file system
   include: filesystem.yml
   when: >
     ( rhel_vmware_disk_manager__options == "e") or
@@ -43,7 +43,7 @@
   include: mount.yml
   when: ( rhel_vmware_disk_manager__options == "f")
 
-- name:Enlarge a mountpoint only (if enough space in the VG)
+- name: Enlarge a mountpoint only (if enough space in the VG)
   include: extendvol.yml
   when: ( rhel_vmware_disk_manager__options == "g")
 
