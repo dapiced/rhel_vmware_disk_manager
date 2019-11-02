@@ -7,7 +7,7 @@ Ansible role rhel_vmware_disk_manager
 Required
 --------
 
-Have access to the python API vmware pyvmomi  
+Have access to the python API vmware pyvmomi / python 3.6
 Have the latest copy of vmware_guest_disk_facts_beta.py  
 Limit ansible must be the server in question (with FQDN)  
 The os system disk must be scsi_id: 0 and unit_number: 0 (this should be the default)  
