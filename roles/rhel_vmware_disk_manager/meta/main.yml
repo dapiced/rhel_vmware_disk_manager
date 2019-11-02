@@ -4,7 +4,7 @@ galaxy_info:
   description: An Ansible role that Added disk vmware, partition, lvg, lvol, format, mount and * extend * lv for rhel 7 and 8
   license: Free
   min_ansible_version: 2.8
-  github_branch: master
+  github_branch: origin/master
   platforms:
   - name: EL
     versions:
