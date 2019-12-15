@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: dapiced
-  description: An Ansible role that Added disk vmware, partition, lvg, lvol, format, mount and * extend * lv for rhel 7 and 8  
+  description: An Ansible role that Added disk vmware partition lvg lvol format mount and extend lv for rhel   
   license: Free
   min_ansible_version: 2.8 
   platforms:
